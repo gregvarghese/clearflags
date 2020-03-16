@@ -13,13 +13,18 @@ namespace ClearFlag
 
         private static void Main(string[] args)
         {
-            Console.WriteLine("This utility will clear the read-only and archive attributes on all files in the path you specify.");
-            Console.WriteLine($"Once changed, this cannot be undone.{Environment.NewLine + Environment.NewLine}");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.White;
+            WriteFullLine("This utility will clear the read-only and archive attributes on all files in the path you specify.");
+            WriteFullLine($"Once changed, this cannot be undone.");
+            Console.ResetColor();
+            Console.WriteLine(Environment.NewLine);
 
             menu = DisplayMenu();
 
             if (menu.Equals(4)) return;
 
+            Console.WriteLine("Please enter folder path:");
             var path = Console.ReadLine();
             if (Directory.Exists(path))
                 ProcessDirectory(path);
@@ -93,6 +98,12 @@ namespace ClearFlag
             Console.WriteLine("4. Exit");
             var result = Console.ReadLine();
             return Convert.ToInt32(result);
+        }
+
+
+        static void WriteFullLine(string value)
+        {
+            Console.WriteLine(value.PadRight(Console.WindowWidth - 1)); // <-- see note
         }
     }
 }
