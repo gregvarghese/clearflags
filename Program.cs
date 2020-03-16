@@ -14,8 +14,7 @@ namespace ClearFlag
         private static void Main(string[] args)
         {
             Console.WriteLine("This utility will clear the read-only and archive attributes on all files in the path you specify.");
-            Console.WriteLine("Once changed, this cannot be undone.");
-            Console.WriteLine("Please enter path to clear read-only and archive attributes:");
+            Console.WriteLine($"Once changed, this cannot be undone.{Environment.NewLine + Environment.NewLine}");
 
             menu = DisplayMenu();
 
